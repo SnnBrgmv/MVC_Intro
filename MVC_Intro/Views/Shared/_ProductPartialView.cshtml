@@ -1,0 +1,22 @@
+﻿@model ShopIndexVM
+
+@if (Model != null && Model.Products != null)
+{
+    foreach (var product in Model.Products)
+    {
+        <div class="col-lg-4 col-md-6 text-center @product.Name.ToLower()">
+            <div class="single-product-item">
+                <div class="product-image">
+                    <a asp-controller="Shop" asp-action="Detail"><img src="~/assets/img/products/@product.ImgSrc" alt="@product.Name"></a>
+                </div>
+                <h3>@product.Name</h3>
+                <p class="product-price"><span>Per Kg</span> @product.Price$ </p>
+                <a asp-controller="Shop" asp-action="Cart" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>No products available.</p>
+}
